@@ -3,9 +3,9 @@ from tkinter import Tk, Label, Button, Canvas,Entry,Toplevel
 from PIL import Image, ImageTk
 
 #Players images path specified
-path_ppru = r"C:\Users\MASTER\OneDrive - Jeevay Software Solutions\Desktop\New folder\paperu.png"
-path_rocku = r"C:\Users\MASTER\OneDrive - Jeevay Software Solutions\Desktop\New folder\rocked.png"
-path_scissoru = r"C:\Users\MASTER\OneDrive - Jeevay Software Solutions\Desktop\New folder\scissor.png"
+path_ppru = r"C:\Users\MASTER\OneDrive - Jeevay Software Solutions\Desktop\New folder\pprm.png"
+path_rocku = r"C:\Users\MASTER\OneDrive - Jeevay Software Solutions\Desktop\New folder\rockm.png"
+path_scissoru = r"C:\Users\MASTER\OneDrive - Jeevay Software Solutions\Desktop\New folder\scissorm.png"
 #computer images path specified
 
 
@@ -16,6 +16,7 @@ path_gamerule = r"C:\Users\MASTER\OneDrive - Jeevay Software Solutions\Desktop\N
 class RPSGame(Tk):
     def __init__(self, wtitle):
         super().__init__()
+        self.configure(bg="#6FE6FC")
         self.title(wtitle)
         # Variables to store images
         self.image_on_canvas_user = None
@@ -28,36 +29,37 @@ class RPSGame(Tk):
     def create_widgets(self):
         self.canvas2=Canvas(self,width=1300,height=100,bd=2,bg="#001F3F")
         self.canvas2.pack()
-        self.canvas = Canvas(self, width=1300, height=680 ,bd=2 , bg='white')
+        self.canvas = Canvas(self, width=1300, height=680 ,bd=2 , bg='#6FE6FC')
         self.canvas.pack()
-        self.label1=Label(self.canvas2,text="ROCK\nPAPER\nSCISSORS\nGAME",font=("Lucida Console",12,"bold"),fg="white",bg="#000080")
-        self.label1.place(x=200,y=20)
-        self.label1=Label(self.canvas2,text="|\n|\n|\n|",font=("Cinzel",12,"bold"),fg="white",bg="#000080")
+        self.label1=Label(self.canvas2,text="ROCK\nPAPER\nSCISSORS\nGAME",font=("Lucida Handwriting",12,"bold"),fg="white",bg="black")
+        self.label1.place(x=200,y=15) 
+        self.label1=Label(self.canvas2,text="|\n|\n|\n|",font=("Cinzel",12,"bold"),fg="white",bg="black")
         self.label1.place(x=300,y=20)
         self.label2=Label(self.canvas2,text="PLAYER:",font=("Lucida Handwriting",15,"bold"),fg="white",bg="black")
         self.label2.place(x=400,y=20)
         self.entrybox1=Entry(self.canvas2,state="disabled",font=("Helvetica",20),fg="red")
-        self.entrybox1.place(x=600,y=20)
+        self.entrybox1.place(x=560,y=20)
         self.entrybox2=Entry(self.canvas2,state="disabled",font=("Helvetica",20),fg="red")
-        self.entrybox2.place(x=600,y=70)
-        self.label2=Label(self.canvas2,text="Computer:",font=("Lucida Handwriting",15,"bold"),fg="white",bg="black")
+        self.entrybox2.place(x=560,y=65)
+        self.label2=Label(self.canvas2,text="COMPUTER:",font=("Lucida Handwriting",15 ,"bold"),fg="white",bg="black")
         self.label2.place(x=400,y=70)
-        self.l1=Label(self,text="Player",font=("Courier",25,"bold"),fg="black")
-        self.l2=Label(self,text="Computer",font=("Courier",25,"bold"),fg="black")
-        self.l3=Label(self,text="Vs",font=("Courier",40,"bold"),fg="black")
+        self.l1=Label(self,text="Player",font=("Lucida Handwriting",25,"bold"),fg="black", bg="#6FE6FC")
+        self.l2=Label(self,text="Computer",font=("Lucida Handwriting",25,"bold"),fg="black", bg="#6FE6FC")
+        self.l3=Label(self,text="Vs",font=("Lucida Handwriting",40,"bold"),fg="black", bg="#6FE6FC")
         self.l1.place(x=100,y=150)
         self.l2.place(x=980,y=150)
         self.l3.place(x=580,y=350)
         # Buttons to call rock, paper, and scissor images
-        self.rock_b = Button(self, text='ROCK', command=lambda: self.determine_winner(random.randint(1, 3), 2) , font=('Times' , 10 , 'bold'), padx=7, pady=5 , fg='White', bg='Navy' ,activebackground="white",activeforeground='Navy', bd=3)
+        self.rock_b = Button(self, text='Rock', command=lambda: self.determine_winner(random.randint(1, 3), 2), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
         self.rock_b.place(x=35, y=570)
-        self.paper_b = Button(self, text='PAPER', command=lambda: self.determine_winner(random.randint(1, 3), 1) ,font=('Times' , 10 , 'bold'), padx=7, pady=5 , fg='white', bg='Navy' ,activebackground="white",activeforeground='Navy', bd=3)
+        self.paper_b = Button(self, text='Paper', command=lambda: self.determine_winner(random.randint(1, 3), 2), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
         self.paper_b.place(x=140, y=570)
-        self.scissor_b = Button(self, text='SCISSOR', command=lambda: self.determine_winner(random.randint(1, 3), 3), font=('Times' , 10 , 'bold'), padx=7, pady=5, fg='white', bg='Navy' ,activebackground="white",activeforeground='Navy', bd=3)
+        self.scissor_b = Button(self, text='Scissor', command=lambda: self.determine_winner(random.randint(1, 3), 2), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
         self.scissor_b.place(x=250, y=570)
-        self.reset_b=Button(self.canvas2,text="RESET",command=self.reset_game,font=("Times",10,"bold"),padx=10,pady=5,bg="Navy",fg="White"  , activebackground="white",activeforeground='Navy',bd=3)
+        self.reset_b= Button(self.canvas2,text="RESET",command=self.reset_game,font=("Lucida Handwriting",10,"bold"),padx=10,pady=5,bg="black",fg="White"  , activebackground="white",activeforeground='#6FE6FC',bd=3)
+
         self.reset_b.place(x=1050,y=50)
-        self.rules_b = Button(self,text="RULES", command= self.open_rules, font=("Times", 10, "bold"), padx=10, pady=5, bg="Navy", fg="White", activebackground="white",activeforeground='Navy', bd=3)
+        self.rules_b = Button(self, text='RULES', command= self.open_rules, font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
         self.rules_b.place(x=1150, y=50)
 
     def open_rules(self):
@@ -79,23 +81,23 @@ class RPSGame(Tk):
         return ImageTk.PhotoImage(img)
 
     def create_user_images(self, player):
-        
         if player == 1:
-            self.image_on_canvas_user = self.create_image(path_ppru, 500, 350)
+            self.image_on_canvas_user = self.create_image(path_ppru, 5, 180)
         elif player == 2:
-            self.image_on_canvas_user = self.create_image(path_rocku, 500, 350)
+            self.image_on_canvas_user = self.create_image(path_rocku, 5, 180)
         else:
-            self.image_on_canvas_user = self.create_image(path_scissoru,500, 350)
-        self.canvas.create_image(5, 100,anchor="nw",image=self.image_on_canvas_user)
+            self.image_on_canvas_user = self.create_image(path_scissoru, 5, 180)
+        self.canvas.create_image(5, 108, anchor="nw", image=self.image_on_canvas_user)
 
     def create_comp_images(self, computer):
         if computer == 1:
-            self.image_on_canvas_comp = self.create_image(path_ppru, 1000, 100)
+            self.image_on_canvas_comp = self.create_image(path_ppru, 895, 180)
         elif computer == 2:
-            self.image_on_canvas_comp = self.create_image(path_rocku, 1000, 100)
+            self.image_on_canvas_comp = self.create_image(path_rocku, 895, 180)
         else:
-            self.image_on_canvas_comp = self.create_image(path_scissoru, 1000, 100)
-        self.canvas.create_image(1050, 270, image=self.image_on_canvas_comp)
+            self.image_on_canvas_comp = self.create_image(path_scissoru, 895, 180)
+        self.canvas.create_image(895, 108, anchor="nw", image=self.image_on_canvas_comp)
+
 
     def determine_winner(self, computer, player):
         player_score,comp_score=self.count_num(player,computer) 
