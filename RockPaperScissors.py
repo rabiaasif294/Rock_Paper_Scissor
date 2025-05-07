@@ -52,9 +52,9 @@ class RPSGame(Tk):
         # Buttons to call rock, paper, and scissor images
         self.rock_b = Button(self, text='Rock', command=lambda: self.determine_winner(random.randint(1, 3), 2), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
         self.rock_b.place(x=35, y=570)
-        self.paper_b = Button(self, text='Paper', command=lambda: self.determine_winner(random.randint(1, 3), 2), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
+        self.paper_b = Button(self, text='Paper', command=lambda: self.determine_winner(random.randint(1, 3), 1), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
         self.paper_b.place(x=140, y=570)
-        self.scissor_b = Button(self, text='Scissor', command=lambda: self.determine_winner(random.randint(1, 3), 2), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
+        self.scissor_b = Button(self, text='Scissor', command=lambda: self.determine_winner(random.randint(1, 3), 3), font=('Lucida Handwriting', 10, 'bold'), padx=7, pady=5, fg='white', bg='black', activebackground="white", activeforeground='black', bd=3)
         self.scissor_b.place(x=250, y=570)
         self.reset_b= Button(self.canvas2,text="RESET",command=self.reset_game,font=("Lucida Handwriting",10,"bold"),padx=10,pady=5,bg="black",fg="White"  , activebackground="white",activeforeground='#6FE6FC',bd=3)
 
